@@ -1,15 +1,15 @@
 service cloud.firestore {
-  match /databases/{database}/documents {
-    match /groceryLists/{groceryList}/{rest=**} {
-      allow read, write: if isMemberOfGroceryList();
+    match /databases/{database}/documents {
+        match /groceryLists/{groceryList}/{document=**} {
+            allow read, write: if isMemberOfGroceryList();
 
-      function isMemberOfGroceryList() {
-      	return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.groceryListId == groceryList;
-  		}
+            function isMemberOfGroceryList() {
+                return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.groceryListId == groceryList;
+            }
+        }
+        match /users/{document=**} {
+            allow read: if request.auth.uid != null;
+            allow write: if false;
+        }
     }
-    match /users/{rest=**} {
-			allow read: if request.auth.uid != null;
-      allow write: if false;
-    }
-  }
 }
