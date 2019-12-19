@@ -10,6 +10,7 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from 'statemanagement/reducers/root.reducer';
+import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary';
 
 
 /* eslint-disable no-underscore-dangle */
@@ -23,7 +24,9 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <App/>
+            <ErrorBoundary>
+                <App/>
+            </ErrorBoundary>
         </BrowserRouter>
     </Provider>
     ,
