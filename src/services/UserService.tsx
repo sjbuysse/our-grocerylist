@@ -1,10 +1,10 @@
-import { createUserData, UserData } from '../model/user-data.interface';
+import { createUserData, UserData } from '../features/user/model/user-data.interface';
 import { from, Observable, of } from 'rxjs/index';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import fire from 'fire';
 import { uuid } from '../utils';
-import { AuthMetaData } from '../model/auth-meta-data.interface';
+import { AuthMetaData } from '../features/user/model/auth-meta-data.interface';
 import { filter, first, map, merge, shareReplay, switchMap } from 'rxjs/internal/operators';
 import { isNullOrUndefined } from 'util';
 

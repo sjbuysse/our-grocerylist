@@ -1,4 +1,4 @@
-import { Grocery } from '../model/grocery.interface';
+import { Grocery } from '../features/grocery-list/model/grocery.interface';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import fire from 'fire';
@@ -27,7 +27,7 @@ export const update = (groceryListId: string, grocery: Grocery): Promise<any> =>
     getGroceryListRef(groceryListId).doc(grocery.id).set(grocery);
 
 export const remove = (groceryListId: string, id: string): Promise<any> =>
-    getGroceryListRef(groceryListId).doc(id).delete();
+    getGroceryListRef(groceryListId).doc(id).delete().catch(e => console.log(e.message));
 
 export const removeBatch = (groceryListId: string, groceryIds: string[]): Promise<any> => {
     const batch = db.batch();
