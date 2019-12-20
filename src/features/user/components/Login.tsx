@@ -13,6 +13,7 @@ class Login extends Component<LoginProps> {
         const provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithRedirect(provider);
         firebase.auth().getRedirectResult().then((userCredential: firebase.auth.UserCredential) => {
+            console.log(userCredential.user);
         }).catch(e => console.log(e));
     }
 

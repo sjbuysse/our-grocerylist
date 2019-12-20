@@ -4,7 +4,7 @@ service cloud.firestore {
       allow read, delete: if isMemberOfGroceryList();
       allow update, create: if request.resource.data.name is string
       && request.resource.data.completed is bool
-			&& request.resource.data.createdAt is number
+      && request.resource.data.createdAt is number
       && isMemberOfGroceryList();
 
       function isMemberOfGroceryList() {
@@ -13,7 +13,7 @@ service cloud.firestore {
     }
 
     match /users/{rest=**} {
-    	allow read: if true;
+    	allow read, create: if true;
     }
   }
 }

@@ -26,7 +26,6 @@ class LoginContainer extends Component<Props, LoginContainerState> {
 
     render() {
         const redirectUrl = new URLSearchParams(this.props.location.search).get('redirectUrl');
-        console.log(redirectUrl);
         const typedRedirectUrl: string = redirectUrl ? redirectUrl : '/';
         return (
             <div>
